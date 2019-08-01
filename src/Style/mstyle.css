@@ -1,0 +1,65 @@
+body{
+    background:url('../back2.jpg');
+    
+    background-repeat:  no-repeat;
+    background-attachment: fixed;
+    background-size:auto;
+	height:100%;
+}
+
+.rounded{
+    margin-top:200px!important;
+    border-radius:5px!important;
+    padding:20px!important;
+    opacity:0.9!important;
+}
+
+.welcome_page_div{
+    width:55%;
+    margin:100px auto;
+    text-align:center;
+}
+
+.login_main_div{
+    width:26%;
+    margin:100px auto;
+    text-align:center;
+}
+
+.heading_t{
+    text-align: center!important; 
+    margin-bottom: -85px !important;
+    margin-top: -30px !important;
+    color: orangered !important;
+    /* background: url("../bgh.jpg") !important; */
+    background-color:rgba(255, 255, 255,0.31)!important;
+    padding: 4px -10px !important;
+}
+
+
+.welcome_heading{
+    font-size:40px!important;
+    text-decoration: underline!important;
+}
+
+.welcome_main_heading{
+    font-size:75px!important;
+    font-weight:bold!important;
+    margin-top: 1%;
+}
+
+.login_btn{
+    color:white!important;
+    background-color: black!important;
+    padding:10px 30px!important;
+    margin:20px 5px 25px 5px!important;
+    width:150px!important;
+}
+
+.signup_btn{
+    color:white!important;
+    background-color:blue!important;
+    padding:10px 30px!important;
+    margin:20px 5px 25px 5px!important;
+    width:150px!important;
+}
