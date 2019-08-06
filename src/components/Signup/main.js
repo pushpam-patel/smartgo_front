@@ -8,11 +8,12 @@ import Snackbar from '@material-ui/core/Snackbar';
 
 class SignupPage extends Component{
     state={
-        name='',
-        email='',
-        pnum='',
-        pass='',
-        cnfpass='',
+        name:'',
+        email:'',
+        pnum:'',
+        pass:'',
+        cnfpass:'',
+        open: false,
         vertical: 'top',
         horizontal: 'center',
         message:''
@@ -41,7 +42,96 @@ class SignupPage extends Component{
               password:this.state.password,
               user_type:"user"
             }
+            axios.post('https://rocky-atoll-55276.herokuapp.com/users',new_user,{
+            header:{
+              'Content-type':'application/json'
+            }
+            }).then((res)=>{
+            this.setState({
+              message:"Successful signup"
+            })
+            this.handleClick()
+            setTimeout(() => {
+              window.location.href="/login"
+            }, 2000);
+          }).catch((err)=>{
+            this.setState({
+              message:"Something went wrong. Please try again."
+            })
+            this.handleClick()
+        })
+
         }
+        else{
+          this.setState({
+            message:"Password and Confirm Password are different."
+          })
+          this.handleClick()
+        }
+    }
+
+    render(){
+      const { vertical, horizontal, open } = this.state;
+        return(
+            <div className="signup_main_div">
+              <Typography component="p" variant="h2" className="heading_t2">SMART GO</Typography>
+            <Paper className="roundedsu width_less">
+            <Snackbar
+          anchorOrigin={{ vertical, horizontal }}
+          open={open}
+          onClose={this.handleClose}
+          ContentProps={{
+            'aria-describedby': 'message-id',
+          }}
+          message={<span id="message-id">{this.state.message}</span>}
+        />
+                <Typography component="p" className="accidents_heading">Signup Page</Typography>
+                <TextField
+          id="outlined-name"
+          label="Name"
+          value={this.state.name}
+          onChange={this.handleChange('name')}
+          margin="normal"
+          variant="outlined"
+        /><br></br>    
+        <TextField
+          id="outlined-name"
+          label="E-mail"
+          value={this.state.email}
+          onChange={this.handleChange('email')}
+          margin="normal"
+          variant="outlined"
+        /><br></br>
+          <TextField
+          id="outlined-name"
+          label="Phone Number"
+          value={this.state.pnum}
+          onChange={this.handleChange('pnum')}
+          margin="normal"
+          variant="outlined"
+        /><br></br>
+        <TextField
+          id="outlined-name"
+          label="Password"
+          value={this.state.pass}
+          onChange={this.handleChange('pass')}
+          type="password"
+          margin="normal"
+          variant="outlined"
+        /><br></br>
+          <TextField
+          id="outlined-name"
+          label="Confirm Password"
+          value={this.state.confpass}
+          onChange={this.handleChange('confpass')}
+          type="password"
+          margin="normal"
+          variant="outlined"
+        /><br></br>
+        <Button onClick={this.signup} className="signup_btn">Sign Up</Button>
+        </Paper>
+            </div>
+        )
     }
 }
 

@@ -6,10 +6,11 @@ import axios from 'axios';
 import Paper from '@material-ui/core/Paper'
 import Snackbar from '@material-ui/core/Snackbar';
 
-class LoginPage extends Component{
+class LoginPagePloice extends Component{
     state={
         email:'',
         password:'',
+        pincode:'',
         open: false,
         vertical: 'top',
         horizontal: 'center',
@@ -84,13 +85,22 @@ class LoginPage extends Component{
           }}
           message={<span id="message-id">{this.state.message}</span>}
         />
-                <Typography component="p" variant="h4" className="accidents_heading">Login</Typography>
+                <Typography component="p" variant="h4" className="accidents_heading">Police Login</Typography>
                 
                 <TextField
           id="outlined-name"
           label="E-mail"
           value={this.state.email}
           onChange={this.handleChange('email')}
+          margin="normal"
+          variant="outlined"
+        /><br></br>
+        <TextField
+          id="outlined-name"
+          label="Area Pincode"
+          value={this.state.pincode}
+          onChange={this.handleChange('pincode')}
+          type="number"
           margin="normal"
           variant="outlined"
         /><br></br>
@@ -110,4 +120,4 @@ class LoginPage extends Component{
     }
 }
 
-export default LoginPage
+export default LoginPagePloice
