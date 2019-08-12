@@ -28,7 +28,7 @@ class DailySchedules extends Component{
         this.setState({
             finding:true
         })
-        axios.get('https://rocky-atoll-55276.herokuapp.com/daily',{},{
+        axios.get('/daily',{},{
             headers:{
                 'Content-Type': 'application/json'
             }

@@ -64,7 +64,7 @@ showPosition=(position)=> {
 
     console.log(n)
 
-    axios.post('https://rocky-atoll-55276.herokuapp.com/rgeo',n,{
+    axios.post('/rgeo',n,{
         headers:{
             'Content-Type': 'application/json'
         }
@@ -99,7 +99,7 @@ handleClose = () => {
                 + currentdate.getHours() + ":"  
                 + currentdate.getMinutes() + ":" 
                 + currentdate.getSeconds();
-        axios.post('https://rocky-atoll-55276.herokuapp.com/accident',{time:datetime,place:this.state.address,level:this.state.level},{
+        axios.post('/accident',{time:datetime,place:this.state.address,level:this.state.level},{
             headers:{
                 'Content-Type': 'application/json'
             }

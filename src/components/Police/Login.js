@@ -39,24 +39,13 @@ class LoginPagePloice extends Component{
             data.forEach((val,ind)=>{
                 if(val.email==this.state.email && val.password==this.state.password){
                     flag=1
-                    localStorage.setItem('yatayat_user',JSON.stringify(val))
+                    localStorage.setItem('smart_user',JSON.stringify(val))
                     this.setState({
                         message:"Login successful."
                     })
                     this.handleClick()
                     setTimeout(() => {
-                        if(val.user_type=="user"){
-                            window.location.href="/user/traffic"
-                        }
-                        else if(val.user_type=="police"){
-                            window.location.href="/police"
-                        }
-                        else if(val.user_type=="hospital"){
-                            window.location.href="/hospital"
-                        }
-                        else if(val.user_type=="driver"){
-                            window.location.href="/driver"
-                        }
+                         window.location.href="/police/report"   
                     }, 2000);
                 }
             })

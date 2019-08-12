@@ -42,7 +42,7 @@ class SignupPage extends Component{
               password:this.state.password,
               user_type:"user"
             }
-            axios.post('https://rocky-atoll-55276.herokuapp.com/users',new_user,{
+            axios.post('/users',new_user,{
             header:{
               'Content-type':'application/json'
             }

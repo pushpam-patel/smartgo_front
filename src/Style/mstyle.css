@@ -138,7 +138,7 @@ body{
     margin:100px auto!important;
 }
 
-.yat_logo,.logout_btn{
+.yat_logo,.logout_btn,.mainheading{
     display:inline-block!important;
 }
 
@@ -194,4 +194,62 @@ body{
     margin-top:70px!important;
     border-radius:5px!important;
     padding:20px!important;
+}
+
+.tagline{
+    margin-top: -50px
+}
+
+.police_appbar{
+    border-bottom:5px solid black!important;
+    background-color:rgb(0, 140, 255)!important;
+}
+.tcn_heading{
+    background-color:white!important;
+    border-top:5px solid black!important;
+    border-bottom:5px solid black!important;
+    margin-top:50px!important;
+    padding:10px 0px!important;
+}
+
+
+.hospital_info{
+    width:60%!important;
+    margin:50px auto!important;
+}
+
+.accident_paper{
+    padding:10px!important;
+    font-size:18px!important;
+    margin:30px auto!important;
+}
+
+.addr,.urg{
+    font-size:22px!important;
+}
+
+.pointer{
+    cursor:pointer!important;
+}
+
+.High{
+    color:red!important;
+    font-weight:bold!important;
+}
+
+.Medium{
+    color:rgb(216, 216, 0)!important;
+    font-weight:bold!important;
+}
+
+.Low{
+    color:green!important;
+    font-weight:bold!important;
+}
+
+.mainheading{
+    font-size:23px!important;
+    font-weight:bold!important;
+    color:rgb(17, 14, 14)!important;
+    margin-left: 34.7% !important;
 }

@@ -9,11 +9,11 @@ class WelcomePage extends Component{
             <div className="welcome_page_div">
             <Paper className="roundedw">
                 <Typography component="h4" variant="h4" className="welcome_heading">Welcome to</Typography>
-                <Typography component="h3" variant="h3" className="welcome_main_heading">Smart GO</Typography><br></br>
-                <Typography component="p" variant="h6" className="tagline">People don't take trips - trips take people.</Typography><br></br>
-                <Button onClick={()=>{window.location.href="/login"}} className="login_btn">Login</Button>
-                <Button onClick={()=>{window.location.href="/signup"}} className="signup_btn">Sign Up</Button><br></br>
-                <a href="#" color="red">Ploice Login</a> | <a href="#">Hospital Login</a>
+                <Typography component="h3" variant="h3" className="welcome_main_heading">Smart GO</Typography>
+                <Typography component="p" variant="h6" className="tagline">People don't take trips - trips take people.</Typography><br></br><br></br>
+                <Button onClick={()=>{window.location.href="/user/login"}} className="login_btn">Login</Button>
+                <Button onClick={()=>{window.location.href="/user/signup"}} className="signup_btn">Sign Up</Button><br></br>
+                <a href="#" color="red">Police Login</a> | <a href="#">Hospital Login</a>
                 </Paper>
             </div>
         )

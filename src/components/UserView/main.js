@@ -17,7 +17,7 @@ class UserView extends Component{
     render(){
         return(
             <div>
-            <Accident />
+            <DailySec />
             </div>
         )
     }

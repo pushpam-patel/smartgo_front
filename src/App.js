@@ -7,10 +7,12 @@ import Login from './components/LoginPage/main';
 import Signup from './components/Signup/main';
 import UserView from './components/UserView/main'
 import LoginPol from './components/Police/Login'
+import LoginHos from './components/Hospital/login'
+import Routs from './components/Routs'
 
 function App() {
   return (
-        <LoginPol />
+        <Routs />
   );
 }
 

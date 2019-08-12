@@ -6,10 +6,11 @@ import axios from 'axios';
 import Paper from '@material-ui/core/Paper'
 import Snackbar from '@material-ui/core/Snackbar';
 
-class LoginPage extends Component{
+class LoginPageHospital extends Component{
     state={
         email:'',
         password:'',
+        pincode:'',
         open: false,
         vertical: 'top',
         horizontal: 'center',
@@ -31,26 +32,27 @@ class LoginPage extends Component{
     };
 
     login=()=>{
-        axios.get('https://thawing-wave-40268.herokuapp.com/users').then((res)=>{
+        axios.get('/users').then((res)=>{
             let data=res.data
             console.log(data)
             let flag=0
             data.forEach((val,ind)=>{
                 if(val.email==this.state.email && val.password==this.state.password){
                     flag=1
-                    localStorage.setItem('yatayat_user',JSON.stringify(val))
+                    localStorage.setItem('smartgo_user',JSON.stringify(val))
                     this.setState({
                         message:"Login successful."
                     })
                     this.handleClick()
                     setTimeout(() => {
-                        window.location.href="/user/daily"
+                         window.location.href="/hospital/report"
+                        
                     }, 2000);
                 }
             })
             if(flag==0){
                 this.setState({
-                    message:"User not found. Please sign up."
+                    message:"Hospital not found"
                 })
                 this.handleClick()
             }
@@ -73,13 +75,22 @@ class LoginPage extends Component{
           }}
           message={<span id="message-id">{this.state.message}</span>}
         />
-                <Typography component="p" variant="h4" className="accidents_heading">Login</Typography>
+                <Typography component="p" variant="h4" className="accidents_heading">Hospital Login</Typography>
                 
                 <TextField
           id="outlined-name"
           label="E-mail"
           value={this.state.email}
           onChange={this.handleChange('email')}
+          margin="normal"
+          variant="outlined"
+        /><br></br>
+        <TextField
+          id="outlined-name"
+          label="Area Pincode"
+          value={this.state.pincode}
+          onChange={this.handleChange('pincode')}
+          type="number"
           margin="normal"
           variant="outlined"
         /><br></br>
@@ -99,4 +110,4 @@ class LoginPage extends Component{
     }
 }
 
-export default LoginPage
+export default LoginPageHospital
