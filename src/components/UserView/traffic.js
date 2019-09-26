@@ -63,7 +63,7 @@ class TrafficReport extends Component{
 
         console.log(n)
 
-        axios.post('https://rocky-atoll-55276.herokuapp.com/rgeo',n,{
+        axios.post('https://thawing-wave-40268.herokuapp.com/rgeo',n,{
             headers:{
                 'Content-Type': 'application/json'
             }
@@ -91,7 +91,7 @@ class TrafficReport extends Component{
                 + currentdate.getMinutes() + ":" 
                 + currentdate.getSeconds();
         console.log({time:datetime,place:this.state.address,level:this.state.level})
-        axios.post('/traffic',{time:datetime,place:this.state.address,level:this.state.level},{
+        axios.post('https://thawing-wave-40268.herokuapp.com/traffic',{time:datetime,place:this.state.address,level:this.state.level},{
             headers:{
                 'Content-Type': 'application/json'
             }

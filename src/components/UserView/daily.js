@@ -28,7 +28,7 @@ class DailySchedules extends Component{
         this.setState({
             finding:true
         })
-        axios.get('/daily',{},{
+        axios.get('https://thawing-wave-40268.herokuapp.com/daily',{},{
             headers:{
                 'Content-Type': 'application/json'
             }

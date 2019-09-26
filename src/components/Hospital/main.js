@@ -15,7 +15,7 @@ class HospitalView extends Component{
     }
 
     getData=()=>{
-        axios.get('/accident').then((res)=>{
+        axios.get('https://thawing-wave-40268.herokuapp.com/accident').then((res)=>{
             console.log(res.data)
             this.setState({
                 data:res.data.reverse()
@@ -37,7 +37,7 @@ showPosition=(position)=> {
         long:position.coords.longitude
     }
 
-    axios.post('/rgeo',n,{
+    axios.post('https://thawing-wave-40268.herokuapp.com/rgeo',n,{
         headers:{
             'Content-Type': 'application/json'
         }

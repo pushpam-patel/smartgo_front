@@ -5,9 +5,10 @@ import Button from '@material-ui/core/Button'
 import TextField from '@material-ui/core/TextField'
 import Paper from '@material-ui/core/Paper'
 import axios from 'axios'
+import Geocode from "react-geocode";
 import CircularProgress from '@material-ui/core/CircularProgress'
 
-
+Geocode.setApiKey("AIzaSyCEF1MgrRBaktN47f3Xf_sb1POSHnDunY0");
 
 class LocationWise extends Component{
     state={
@@ -53,7 +54,7 @@ class LocationWise extends Component{
         this.setState({
             sending:true
         })
-        axios.get('https://rocky-atoll-55276.herokuapp.com/daily',{},{
+        axios.get('https://thawing-wave-40268.herokuapp.com/daily',{},{
             headers:{
                 'Content-Type': 'application/json'
             }
@@ -67,9 +68,55 @@ class LocationWise extends Component{
             let best_bus
             let best_train
             let best_metro
-           
+            data.bus.forEach((val,ind)=>{
+                Geocode.fromAddress(val.station).then(
+                    response => {
+                      const { lat, lng } = response.results[0].geometry.location;
+                      let di=this.getDistanceFromLatLonInKm(lat, lng, this.state.curr_lat, this.state.curr_long)
+                      if(di<l_bus){
+                          l_bus=di
+                          best_bus=val.station
+                      }
+                    },
+                    error => {
+                    }
+                );
+            })
+            let l_train=1000
+            data.train.forEach((val,ind)=>{
+                Geocode.fromAddress(val.station).then(
+                    response => {
+                      const { lat, lng } = response.results[0].geometry.location;
+                      let di=this.getDistanceFromLatLonInKm(lat, lng, this.state.curr_lat, this.state.curr_long)
+                      if(di<l_train){
+                          l_train=di
+                          best_train=val.station
+                      }
+                    },
+                    error => {
+                    }
+                );
+            })
+            let l_metro=1000
+            data.metro.forEach((val,ind)=>{
+                Geocode.fromAddress(val.station).then(
+                    response => {
+                      const { lat, lng } = response.results[0].geometry.location;
+                      let di=this.getDistanceFromLatLonInKm(lat, lng, this.state.curr_lat, this.state.curr_long)
+                      if(di<l_metro){
+                          l_metro=di
+                          best_metro=val.station
+                      }
+                    },
+                    error => {
+                    }
+                );
+            })
         })
     }
+        
+
+    
 
     take_location=()=>{
         this.setState({
@@ -93,7 +140,7 @@ showPosition=(position)=> {
     }
 
 
-    axios.post('/rgeo',n,{
+    axios.post('https://thawing-wave-40268.herokuapp.com/rgeo',n,{
         headers:{
             'Content-Type': 'application/json'
         }

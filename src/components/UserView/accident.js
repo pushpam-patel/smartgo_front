@@ -64,7 +64,7 @@ showPosition=(position)=> {
 
     console.log(n)
 
-    axios.post('/rgeo',n,{
+    axios.post('https://thawing-wave-40268.herokuapp.com/rgeo',n,{
         headers:{
             'Content-Type': 'application/json'
         }
@@ -99,7 +99,7 @@ handleClose = () => {
                 + currentdate.getHours() + ":"  
                 + currentdate.getMinutes() + ":" 
                 + currentdate.getSeconds();
-        axios.post('/accident',{time:datetime,place:this.state.address,level:this.state.level},{
+        axios.post('https://thawing-wave-40268.herokuapp.com/accident',{time:datetime,place:this.state.address,level:this.state.level},{
             headers:{
                 'Content-Type': 'application/json'
             }

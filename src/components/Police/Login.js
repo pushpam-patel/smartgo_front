@@ -32,7 +32,7 @@ class LoginPagePloice extends Component{
     };
 
     login=()=>{
-        axios.get('https://thawing-wave-40268.herokuapp.com/users').then((res)=>{
+        axios.get('https://thawing-wave-40268.herokuapp.com/policeusers').then((res)=>{
             let data=res.data
             console.log(data)
             let flag=0

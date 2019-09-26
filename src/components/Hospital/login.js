@@ -32,7 +32,7 @@ class LoginPageHospital extends Component{
     };
 
     login=()=>{
-        axios.get('/users').then((res)=>{
+        axios.get('https://thawing-wave-40268.herokuapp.com/hospitalusers').then((res)=>{
             let data=res.data
             console.log(data)
             let flag=0
