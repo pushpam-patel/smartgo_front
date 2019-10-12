@@ -39,7 +39,7 @@ class LoginPageHospital extends Component{
             data.forEach((val,ind)=>{
                 if(val.email==this.state.email && val.password==this.state.password){
                     flag=1
-                    localStorage.setItem('smartgo_user',JSON.stringify(val))
+                    localStorage.setItem('smartgo_hospital',JSON.stringify(val))
                     this.setState({
                         message:"Login successful."
                     })

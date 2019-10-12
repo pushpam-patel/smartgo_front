@@ -39,7 +39,7 @@ class LoginPagePloice extends Component{
             data.forEach((val,ind)=>{
                 if(val.email==this.state.email && val.password==this.state.password){
                     flag=1
-                    localStorage.setItem('smart_user',JSON.stringify(val))
+                    localStorage.setItem('smart_police',JSON.stringify(val))
                     this.setState({
                         message:"Login successful."
                     })

@@ -39,7 +39,7 @@ class LoginPage extends Component{
             data.forEach((val,ind)=>{
                 if(val.email==this.state.email && val.password == sha1(this.state.password)){
                     flag=1
-                    localStorage.setItem('yatayat_user',JSON.stringify(val))
+                    localStorage.setItem('smartgo_user',JSON.stringify(val))
                     this.setState({
                         message:"Login successful."
                     })

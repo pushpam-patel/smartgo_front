@@ -6,7 +6,8 @@ import axios from 'axios'
 class HospitalView extends Component{
     state={
         data:'',
-        to_map:''
+        to_map:'',
+        pinc:''
     }
 
     constructor(props){
@@ -29,25 +30,28 @@ class HospitalView extends Component{
         } else {
           console.log("Geolocation is not supported by this browser.")
         }
-}
-
-showPosition=(position)=> {
-    let n={
-        lat:position.coords.latitude,
-        long:position.coords.longitude
     }
 
-    axios.post('https://thawing-wave-40268.herokuapp.com/rgeo',n,{
-        headers:{
-            'Content-Type': 'application/json'
+    showPosition=(position)=> {
+        let n={
+            lat:position.coords.latitude,
+            long:position.coords.longitude
         }
-    }).then((res)=>{
-        let a=res.data.split(' ').join('+')
-        let b=this.state.to_map.split(' ').join('+')
-        window.open(`https://www.google.com/maps/dir/${a}/${b}`)
-    })
 
-}
+        axios.post('https://thawing-wave-40268.herokuapp.com/rgeo',n,{
+            headers:{
+                'Content-Type': 'application/json'
+            }
+        }).then((res)=>{
+            let a=res.data.split(' ').join('+')
+            let b=this.state.to_map.split(' ').join('+')
+            let pincc=res.data.substring(res.data.length - 13, res.data.length-7)
+            this.setState({
+                pinc:pincc
+            })
+            window.open(`https://www.google.com/maps/dir/${a}/${b}`)
+        })
+    }
 
     show_on_map=(address)=>{
         this.setState({
@@ -78,13 +82,19 @@ showPosition=(position)=> {
             </div>
                 <div className="hospital_info">
                     {
-                        this.state.data && this.state.data.map((val,ind)=>(
-                            <Paper onClick={()=>{this.show_on_map(val.place)}} className="accident_paper pointer">
-                                <Typography component="p" className="addr">Address: <span className="bold">{val.place}</span></Typography>
-                                <Typography component="p" className="urg">Accident Level: <span className={val.level}>{val.level}</span></Typography>
-                                <Typography component="p" className="urg">Time: {val.time}</Typography>
-                            </Paper>
-                        ))
+                        this.state.data && this.state.data.map((val,ind)=>{
+                            let pc=JSON.parse(localStorage.getItem('smartgo_hospital')).pincode
+                            let pii = val.place.substring(val.place.length - 13, val.place.length-7)
+                            if (pii == pc){
+                                return (
+                                    <Paper onClick={()=>{this.show_on_map(val.place)}} className="accident_paper pointer">
+                                        <Typography component="p" className="addr">Address: <span className="bold">{val.place}</span></Typography>
+                                        <Typography component="p" className="urg">Accident Level: <span className={val.level}>{val.level}</span></Typography>
+                                        <Typography component="p" className="urg">Time: {val.time}</Typography>
+                                    </Paper>)
+                            }
+                            
+                        })
                     }
                 </div>
             </div>

@@ -71,7 +71,7 @@ class TrafficReport extends Component{
             this.setState({
                 taking_location:false
             })
-            console.log(res)
+            console.log(res.data.substring(res.data.length - 13, res.data.length-7)) //var res = str.substring(str.length - 13, str.length-7);
             this.setState({
                 address:res.data
             })

@@ -80,15 +80,48 @@ showPosition=(position)=> {
                 </div>
                 <div className="hospital_info">
                     {
-                        this.state.data && this.state.data.map((val,ind)=>(
-                            <Paper onClick={()=>{this.show_on_map(val.place)}} className="accident_paper pointer">
-                                <Typography component="p" className="addr">Address: <span className="bold">{val.place}</span></Typography>
-                                <Typography component="p" className="urg">Traffic: <span className={val.level}>{val.level}</span></Typography>
-                                <Typography component="p" className="urg">Time: {val.time}</Typography>
-                            </Paper>
-                        ))
+                        this.state.data && this.state.data.map((val,ind)=>{
+                            let pc=JSON.parse(localStorage.getItem('smart_police')).pincode
+                            let pii = val.place.substring(val.place.length - 13, val.place.length-7)
+                            if (pii == pc){
+                                return (
+                                    <Paper onClick={()=>{this.show_on_map(val.place)}} className="accident_paper pointer">
+                                        <Typography component="p" className="addr">Address: <span className="bold">{val.place}</span></Typography>
+                                        <Typography component="p" className="urg">Traffic: <span className={val.level}>{val.level}</span></Typography>
+                                        <Typography component="p" className="urg">Time: {val.time}</Typography>
+                                    </Paper>)
+                            }
+                            
+                        })
+                        // this.state.data && this.state.data.map((val,ind)=>(
+                        //     <Paper onClick={()=>{this.show_on_map(val.place)}} className="accident_paper pointer">
+                        //         <Typography component="p" className="addr">Address: <span className="bold">{val.place}</span></Typography>
+                        //         <Typography component="p" className="urg">Traffic: <span className={val.level}>{val.level}</span></Typography>
+                        //         <Typography component="p" className="urg">Time: {val.time}</Typography>
+                        //     </Paper>
+                        // ))
                     }
                 </div>
+                <div className="center tcn_heading">                    
+                    <Typography component="p" className="accidents_heading">Accidents</Typography>
+                </div>
+                    <div className="hospital_info">
+                        {
+                            this.state.data && this.state.data.map((val,ind)=>{
+                                let pc=JSON.parse(localStorage.getItem('smart_police')).pincode
+                                let pii = val.place.substring(val.place.length - 13, val.place.length-7)
+                                if (pii == pc){
+                                    return (
+                                        <Paper onClick={()=>{this.show_on_map(val.place)}} className="accident_paper pointer">
+                                            <Typography component="p" className="addr">Address: <span className="bold">{val.place}</span></Typography>
+                                            <Typography component="p" className="urg">Accident Level: <span className={val.level}>{val.level}</span></Typography>
+                                            <Typography component="p" className="urg">Time: {val.time}</Typography>
+                                        </Paper>)
+                                }
+                                
+                            })
+                        }
+                    </div>
                 </div>
             </div>
         )
