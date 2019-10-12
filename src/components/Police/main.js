@@ -70,7 +70,7 @@ showPosition=(position)=> {
         return(
             <div className="main_div">
                 <div className="police_appbar">
-                    <Typography component="p" className="yat_logo">YATAYAT</Typography>
+                    <Typography component="p" className="yat_logo">SMARTGO</Typography>
                     <Typography component="p" className="mainheading"> POLICE VIEW</Typography>
                     <Typography onClick={this.logout} component="p" className="logout_btn">Logout</Typography>
                 </div>

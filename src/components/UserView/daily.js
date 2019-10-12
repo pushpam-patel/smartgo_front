@@ -46,10 +46,23 @@ class DailySchedules extends Component{
         window.location.href="/"
     }
 
+    rotate=()=>{
+        let temper = this.state.destination
+        let temper2=this.state.start
+        this.setState({
+            start:temper,
+            destination:temper2
+        })
+        // this.state.destination = this.state.start
+        // this.state.start = temper
+    }
+
     render(){
+        console.log(this.state.data)
         let flag1=0
         let flag2=0
         let flag3=0
+        let rotate_angle = 0;
         return(
             <div>
                 <Nav />
@@ -68,7 +81,8 @@ class DailySchedules extends Component{
                 /><br></br><br></br>
 
                 <div class="swap">
-                <img src={swap} width={35} height={35}/></div>
+                
+                <img src={swap} width={35} height={35} onClick={this.rotate}/></div>
 
                 <TextField
                 id="outlined-name"

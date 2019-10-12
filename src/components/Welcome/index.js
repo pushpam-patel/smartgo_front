@@ -13,7 +13,7 @@ class WelcomePage extends Component{
                 <Typography component="p" variant="h6" className="tagline">People don't take trips - trips take people.</Typography><br></br><br></br>
                 <Button onClick={()=>{window.location.href="/user/login"}} className="login_btn">Login</Button>
                 <Button onClick={()=>{window.location.href="/user/signup"}} className="signup_btn">Sign Up</Button><br></br>
-                <a href="#" color="red">Police Login</a> | <a href="#">Hospital Login</a>
+                <a href="/police/login" color="red">Police Login</a> | <a href="/hospital/login">Hospital Login</a>
                 </Paper>
             </div>
         )

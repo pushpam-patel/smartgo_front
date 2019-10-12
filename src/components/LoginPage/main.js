@@ -5,6 +5,7 @@ import Button from '@material-ui/core/Button';
 import axios from 'axios';
 import Paper from '@material-ui/core/Paper'
 import Snackbar from '@material-ui/core/Snackbar';
+var sha1 = require('sha1');
 
 class LoginPage extends Component{
     state={
@@ -36,7 +37,7 @@ class LoginPage extends Component{
             console.log(data)
             let flag=0
             data.forEach((val,ind)=>{
-                if(val.email==this.state.email && val.password==this.state.password){
+                if(val.email==this.state.email && val.password == sha1(this.state.password)){
                     flag=1
                     localStorage.setItem('yatayat_user',JSON.stringify(val))
                     this.setState({

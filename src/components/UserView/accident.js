@@ -72,6 +72,7 @@ showPosition=(position)=> {
         this.setState({
             taking_location:false
         })
+        console.log("Tusharj")
         console.log(res)
         this.setState({
             address:res.data

@@ -5,6 +5,7 @@ import Button from '@material-ui/core/Button';
 import axios from 'axios';
 import Paper from '@material-ui/core/Paper'
 import Snackbar from '@material-ui/core/Snackbar';
+var sha1 = require('sha1');
 
 class SignupPage extends Component{
     state={
@@ -39,7 +40,7 @@ class SignupPage extends Component{
               name:this.state.name,
               email:this.state.email,
               pnum:this.state.pnum,
-              password:this.state.password,
+              password:sha1(this.state.pass),
               user_type:"user"
             }
             axios.post('https://thawing-wave-40268.herokuapp.com/users',new_user,{
@@ -52,7 +53,7 @@ class SignupPage extends Component{
             })
             this.handleClick()
             setTimeout(() => {
-              window.location.href="/login"
+              window.location.href="/user/login"
             }, 2000);
           }).catch((err)=>{
             this.setState({
@@ -104,7 +105,7 @@ class SignupPage extends Component{
         /><br></br>
           <TextField
           id="outlined-name"
-          label="Phone Number"
+          label="Aadhar Number"
           value={this.state.pnum}
           onChange={this.handleChange('pnum')}
           margin="normal"
