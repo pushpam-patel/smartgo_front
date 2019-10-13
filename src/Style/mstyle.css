@@ -253,3 +253,6 @@ body{
     color:rgb(17, 14, 14)!important;
     margin-left: 34.7% !important;
 }
+.display_none{
+    display:none!important;
+}

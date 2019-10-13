@@ -107,7 +107,9 @@ handleClose = () => {
         }).then((res)=>{
             this.setState({
                 message:"Accident reported successfully.",
-                sending:false
+                sending:false,
+                address:"",
+                level:""
             })
             this.handleClick()
         }).catch((err)=>{

@@ -75,7 +75,10 @@ class LocationWise extends Component{
                       let di=this.getDistanceFromLatLonInKm(lat, lng, this.state.curr_lat, this.state.curr_long)
                       if(di<l_bus){
                           l_bus=di
-                          best_bus=val.station
+                          this.setState({
+                            best_bus:val.name
+                          })
+                          
                       }
                     },
                     error => {
@@ -90,7 +93,9 @@ class LocationWise extends Component{
                       let di=this.getDistanceFromLatLonInKm(lat, lng, this.state.curr_lat, this.state.curr_long)
                       if(di<l_train){
                           l_train=di
-                          best_train=val.station
+                          this.setState({
+                            best_train:val.name
+                          })
                       }
                     },
                     error => {
@@ -105,7 +110,9 @@ class LocationWise extends Component{
                       let di=this.getDistanceFromLatLonInKm(lat, lng, this.state.curr_lat, this.state.curr_long)
                       if(di<l_metro){
                           l_metro=di
-                          best_metro=val.station
+                          this.setState({
+                            best_metro:val.name
+                          })
                       }
                     },
                     error => {
@@ -261,7 +268,7 @@ logout=()=>{
                             {
                                 val.metro.map((value,index)=>(
                                     <div>
-                                        {value.from==this.state.start && value.to==this.state.destination && value.name==this.state.best_train && <Paper className="accident_paper">
+                                        {value.from==this.state.start && value.to==this.state.destination && value.name==this.state.best_metro && <Paper className="accident_paper">
                                             <Typography component="p" className="addr">{value.name}</Typography>
                                             <Typography component="p" className="addr">{value.station}</Typography>
                                             <Typography component="p" className="addr">{value.time}</Typography>

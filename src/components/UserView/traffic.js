@@ -98,7 +98,9 @@ class TrafficReport extends Component{
         }).then((res)=>{
             this.setState({
                 message:"Traffic reported successfully.",
-                sending:false
+                sending:false,
+                level:"",
+                address:""
             })
             this.handleClick()
         }).catch((err)=>{
